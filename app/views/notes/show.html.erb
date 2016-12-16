@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<ul>
+  <li><%= @note.created_at %></li>
+  <li><%= @note.title %></li>
+  <li><%= @note.content %></li>
+</ul>
+
+<%= link_to 'Edit', edit_note_path(@note) %> |
+<%= link_to 'Back', notes_path %>
