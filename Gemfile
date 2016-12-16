@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 2.5'
 
 # My Gems
 gem 'devise'
+gem "figaro"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
