@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 # My Gems
 gem 'devise'
 gem "figaro"
+gem 'font-awesome-sass'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

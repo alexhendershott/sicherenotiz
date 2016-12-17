@@ -1,28 +1,34 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Notes</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <div class="middle">
+    <div class="col-1">
+      <% @notes.each do |note| %>
+      <div class="card">
+        <span class="date">
+          <%= note.created_at.strftime("%m-%d-%y") %>
+        </span>
+        <div class="actions">
+          <%= link_to note do %>
+            <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+          <% end %>
+          <%= link_to edit_note_path(note) do %>
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          <% end %>
+          <%= link_to note, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          <% end %>
+        </div>
+        <span class="title">
+          <%= truncate(note.title, length: 65, :escape => false) %>
+        </span>
+        <span class="content">
+          <%= truncate(decryptor(note.content), length: 140, :escape => false) %>
+        </span>
+      </div>
+      <% end %>
+    </div>
 
-  <tbody>
-    <% @notes.each do |note| %>
-      <tr>
-        <td><%= note.created_at %></td>
-        <td><%= note.title %></td>
-        <td><%= note.content %></td>
-        <td><%= link_to 'Show', note %></td>
-        <td><%= link_to 'Edit', edit_note_path(note) %></td>
-        <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <div class="col-2">
 
-<br>
-
-<%= link_to 'New Note', new_note_path %>
+    </div>
+  </div>

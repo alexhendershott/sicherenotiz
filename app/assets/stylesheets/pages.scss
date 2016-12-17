@@ -1,3 +1,113 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,600,700');
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+html, body {
+  font-family: Arial;
+  margin: 0;
+  padding: 0;
+  font-family: 'Source Code Pro', monospace;
+}
+
+header, footer {
+  display: block;
+  background-color: #000;
+  height: 60px;
+  color: #fff;
+  text-transform: uppercase;
+  .header-logo {
+    width: 20px;
+    margin-left: 20px;
+    float: left;
+    height: 60px;
+  }
+  h1 {
+    font-size: 18px;
+    margin: 0px;
+    padding: 0px;
+    line-height: 60px;
+    margin-left: 10px;
+    float: left;
+    span {
+      font-weight: 300;
+    }
+  }
+  form {
+    margin-left: 20px;
+    display: block;
+    margin: 0 auto;
+    width: 400px;
+  }
+  input[type=search] {
+    font-family: 'Source Code Pro', monospace;
+    border-radius: 0px;
+    -webkit-appearance: none;
+    border: 0px;
+    background-color: rgba(255,255,255,.2);
+    height: 40px;
+    outline: none;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 14px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    width: 400px;
+    float: left;
+    font-weight: 300;
+  }
+  .new-note {
+    color: white;
+    text-decoration: none;
+    float: right;
+    color: white;
+    text-decoration: none;
+    float: right;
+    font-size: 30px;
+    line-height: 60px;
+    margin-right: 20px;
+  }
+}
+
+.middle {
+  display: flex;
+  flex-direction: row;
+  background-color: #999;
+}
+
+.col-1 {
+  flex: 2 0 0;
+  background-color: #fff;
+  padding: 0px 30px 0px 30px;
+  overflow: scroll;
+  position: absolute;
+  top: 60px;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  width: 380px;
+  box-shadow: inset -10px 0 40px -7px rgba(0,0,0,0.3);
+}
+
+.col-2 {
+  flex: 4 0 0;
+  background-color: #fff;
+}
+
+
+@media screen and (max-width: 800px) {
+  .middle {
+    flex-direction: column;
+  }
+  .col-1, .col-2, .col-3 {
+    flex: 1;
+  }
+}
+
+@media screen and (max-width: 400px) {
+
+}
