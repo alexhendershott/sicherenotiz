@@ -1,31 +1,8 @@
 
 
   <div class="middle">
-    <div class="col-1">
-      <% @notes.each do |note| %>
-      <div class="card">
-        <span class="date">
-          <%= note.created_at.strftime("%m-%d-%y") %>
-        </span>
-        <div class="actions">
-          <%= link_to note do %>
-            <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-          <% end %>
-          <%= link_to edit_note_path(note) do %>
-            <i class="fa fa-pencil" aria-hidden="true"></i>
-          <% end %>
-          <%= link_to note, method: :delete, data: { confirm: 'Are you sure?' } do %>
-            <i class="fa fa-trash" aria-hidden="true"></i>
-          <% end %>
-        </div>
-        <span class="title">
-          <%= truncate(note.title, length: 65, :escape => false) %>
-        </span>
-        <span class="content">
-          <%= truncate(decryptor(note.content), length: 140, :escape => false) %>
-        </span>
-      </div>
-      <% end %>
+    <div id="col-1" class="col-1">
+      <%= render @notes %>
     </div>
 
     <div class="col-2">

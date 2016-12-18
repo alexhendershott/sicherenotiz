@@ -16,10 +16,7 @@
         <%= image_tag("sincherenotiz-logo.svg", class: "header-logo") %>
         <h1>Sinchere<span>Notiz</span></h1>
 
-        <form>
-          <input type="search" placeholder="Search for a note..."/>
-          <i class="fa fa-search"></i>
-        </form>
+        <%= render "global/search" %>
 
         <%= link_to '+', new_note_path, class: "new-note" %>
 

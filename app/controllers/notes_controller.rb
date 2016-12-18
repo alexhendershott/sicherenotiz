@@ -4,7 +4,11 @@ class NotesController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @notes = Note.all
+    if params[:search]
+      @notes = Note.where('title LIKE ?', "%#{params[:search]}%")
+    else
+      @notes = Note.all
+    end
   end
 
   def show
