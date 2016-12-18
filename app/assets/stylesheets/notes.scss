@@ -2,47 +2,88 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.card {
-  margin-top: 20px;
-  .date {
-    font-size: 12px;
-    border-bottom: 2px solid yellow;
-    box-shadow: inset 0 -10px 0 yellow;
-    color: inherit;
-    -webkit-transition: background .15s cubic-bezier(.33,.66,.66,1);
-    transition: background .15s cubic-bezier(.33,.66,.66,1);
-    font-weight: 700;
-    display: inline-block;;
-    width: 60px;
-    margin-bottom: 4px;
+.note-link:first-of-type {
+  .card {
+    padding-top: 10px;
   }
-  .title {
-    font-size: 18px;
-    font-weight: 700;
-    display: block;
-    width: 100%;
-    margin-bottom: 2px;
+}
+.note-link {
+  text-decoration: none;
+  display: block;
+  height: auto;
+  &:active, &:visited, &:link {
+    color: initial;
   }
-  .content {
-    font-size: 14px;
-    color: #505050;
-    font-weight: 300;
-  }
-  .actions {
-    display: none;
-    float: right;
-    width: 60px;
-    a {
-      text-decoration: none;
-      color: #cccccc;
-      .fa {
+  .card {
+    padding-top: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 10px;
+    .date {
+      font-size: 12px;
+      border-bottom: 2px solid yellow;
+      box-shadow: inset 0 -10px 0 yellow;
+      color: inherit;
+      -webkit-transition: background .15s cubic-bezier(.33,.66,.66,1);
+      transition: background .15s cubic-bezier(.33,.66,.66,1);
+      font-weight: 700;
+      display: inline-block;;
+      width: 60px;
+      margin-bottom: 4px;
+    }
+    .title {
+      font-size: 18px;
+      font-weight: 700;
+      display: block;
+      width: 100%;
+      margin-bottom: 2px;
+    }
+    .content {
+      font-size: 12px;
+      line-height: 14px;
+      color: #505050;
+      font-weight: 300;
+    }
+    .actions {
+      display: none;
+      float: right;
+      width: 60px;
+      a {
+        text-decoration: none;
         color: #cccccc;
+        .fa {
+          color: #cccccc;
+        }
       }
     }
-  }
-  &:hover {
-    .actions {
-      display: block;
+    &:hover {
+      background-color: rgba(0,0,0,.1);
     }
   }
+}
+
+.date {
+  font-size: 12px;
+  border-bottom: 2px solid yellow;
+  box-shadow: inset 0 -10px 0 yellow;
+  color: inherit;
+  -webkit-transition: background .15s cubic-bezier(.33,.66,.66,1);
+  transition: background .15s cubic-bezier(.33,.66,.66,1);
+  font-weight: 700;
+  display: inline-block;;
+  width: 60px;
+  margin-bottom: 4px;
+}
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  display: block;
+  width: 100%;
+  margin-bottom: 12px;
+}
+.content {
+  font-size: 16px;
+  line-height: 28px;
+  color: #505050;
+  font-weight: 300;
 }

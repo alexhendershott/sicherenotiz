@@ -1,0 +1,23 @@
+<span class="date">
+  <%= @note.created_at.strftime("%m-%d-%y") %>
+</span>
+<span class="title">
+  <%= @note.title %>
+</span>
+<span class="content">
+  <%= decryptor(@note.content) %>
+</span>
+
+<%= render 'form', note: @note %>
+
+
+<%= link_to 'Back', notes_path %>
+
+<div class="actions">
+  <%= link_to edit_note_path(@note) do %>
+    <i class="fa fa-pencil" aria-hidden="true"></i>
+  <% end %>
+  <%= link_to @note, method: :delete, data: { confirm: 'Are you sure?' } do %>
+    <i class="fa fa-trash" aria-hidden="true"></i>
+  <% end %>
+</div>
