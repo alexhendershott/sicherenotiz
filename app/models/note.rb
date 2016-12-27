@@ -1,7 +1,7 @@
 class Note < ApplicationRecord
   belongs_to :user
 
-  before_save :encrypted_content
+  
 
   private
    def encrypted_content
