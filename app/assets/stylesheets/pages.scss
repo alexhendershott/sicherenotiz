@@ -93,6 +93,9 @@ header, footer {
   bottom: 0px;
   width: 380px;
   box-shadow: inset -10px 0 40px -7px rgba(0,0,0,0.3);
+  &::-webkit-scrollbar {
+      width: 0px;
+  }
 }
 
 .col-2 {
