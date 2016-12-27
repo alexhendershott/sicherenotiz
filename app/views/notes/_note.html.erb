@@ -7,7 +7,7 @@
       <%= truncate(note.title, length: 65, :escape => false) %>
     </span>
     <span class="content">
-      <%= truncate(note.content, length: 130, :escape => false) %>
+      <%= truncate(decryptor(note.content), length: 130, :escape => false) %>
     </span>
   </div>
 <% end %>
