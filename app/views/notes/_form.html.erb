@@ -9,9 +9,17 @@
       </ul>
     </div>
   <% end %>
-  <%= f.text_field :title %>
-  <%= f.text_field :content %>
+  <span class="date">
+    <%= @note.created_at.strftime("%m-%d-%y") %>
+  </span>
+  <%= f.text_area :title, class: "title", cols: 1, rows: 1 %>
+  <%= f.text_area :content, :value => decryptor(note.content), class:"content" %>
+
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+<script>
+  autosize(document.querySelectorAll('textarea'));
+</script>

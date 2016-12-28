@@ -75,15 +75,22 @@
   margin-bottom: 4px;
 }
 .title {
+  font-family: 'Source Code Pro', monospace;
   font-size: 24px;
   font-weight: 700;
   display: block;
   width: 100%;
   margin-bottom: 12px;
+  border: 0px;
+  outline: none;
 }
 .content {
+  font-family: 'Source Code Pro', monospace;
   font-size: 16px;
   line-height: 28px;
   color: #505050;
   font-weight: 300;
+  border: 0px;
+  width: 100%;
+  outline: none;
 }
