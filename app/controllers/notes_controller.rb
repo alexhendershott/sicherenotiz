@@ -5,9 +5,9 @@ class NotesController < ApplicationController
 
   def index
     if params[:search]
-      @notes = Note.where('title LIKE ?', "%#{params[:search]}%")
+      @notes = Note.where('title LIKE ?', "%#{params[:search]}%").order("updated_at DESC")
     else
-      @notes = Note.all
+      @notes = Note.all.order("updated_at DESC")
     end
   end
 

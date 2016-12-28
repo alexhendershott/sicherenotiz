@@ -1,7 +1,7 @@
 <%= link_to note, class:"note-link", remote: true do %>
   <div class="card">
     <span class="date">
-      <%= note.created_at.strftime("%m-%d-%y") %>
+      <%= note.updated_at.localtime.strftime("%b %e, %l:%M %p") %>
     </span>
     <span class="title">
       <%= truncate(note.title, length: 65, :escape => false) %>

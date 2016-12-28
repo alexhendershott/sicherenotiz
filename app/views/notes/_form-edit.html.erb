@@ -9,9 +9,23 @@
       </ul>
     </div>
   <% end %>
-  <span class="date">
-    <%= @note.created_at.strftime("%m-%d-%y") %>
-  </span>
+  <div class="info-bar">
+    <div class="date-created">
+      Created:
+      <span class="date">
+        <%= note.created_at.localtime.strftime("%b %e, %l:%M %p") %>
+      </span>
+    </div>
+    <div class="date-updated">
+      Updated:
+      <span class="date">
+        <%= note.updated_at.localtime.strftime("%b %e, %l:%M %p") %>
+      </span>
+    </div>
+    <div class="auto-save">
+
+    </div>
+  </div>
   <%= f.text_area :title, class: "title", cols: 1, rows: 1 %>
   <%= f.text_area :content, :value => decryptor(note.content), class:"content" %>
 
@@ -22,4 +36,28 @@
 
 <script>
   autosize(document.querySelectorAll('textarea'));
+</script>
+
+<script>
+$(function() {
+  function notify(message, level) {
+    if (level === undefined) level = "info";
+    $('.auto-save').html(message);
+  }
+
+  $("form").on("submit", function(event) {
+    event.preventDefault();
+    $.ajax({
+      url: $(this).attr("action"),
+      type: "POST",
+      data: $(this).serialize(),
+      dataType: "json"
+    }).done(function(data, status, response) {
+      notify("Note auto saved at <%= note.updated_at.localtime.strftime("%l:%M %p") %>", "success");
+    }).fail(function(data, status, response) {
+      notify("Note failed to auto save.", "error");
+    });
+  });
+});
+
 </script>
