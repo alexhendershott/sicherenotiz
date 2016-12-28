@@ -78,6 +78,19 @@
   .auto-save {
     float: right;
     font-size: 12px;
+    margin-top: 4px;
+    margin-right: 10px;
+  }
+  .actions {
+    float: right;
+    margin-top: 1px;
+    a {
+      text-decoration: none;
+      color: #000;
+      .fa {
+        color: #000;
+      }
+    }
   }
 }
 

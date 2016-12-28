@@ -12,6 +12,10 @@ html, body {
   font-family: 'Source Code Pro', monospace;
 }
 
+textarea::-webkit-resizer {
+  display: none;
+}
+
 header, footer {
   display: block;
   background-color: #000;

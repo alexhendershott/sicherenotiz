@@ -1,4 +1,4 @@
-<%= form_for(note) do |f| %>
+<%= form_for @note, :html => {:"data-autosave" => 'true'} do |f| %>
   <% if note.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(note.errors.count, "error") %> prohibited this note from being saved:</h2>
@@ -22,6 +22,11 @@
         <%= note.updated_at.localtime.strftime("%b %e, %l:%M %p") %>
       </span>
     </div>
+    <div class="actions">
+      <%= link_to @note, method: :delete, data: { confirm: 'Are you sure?' } do %>
+        <i class="fa fa-trash" aria-hidden="true"></i>
+      <% end %>
+    </div>
     <div class="auto-save">
 
     </div>
@@ -29,9 +34,9 @@
   <%= f.text_area :title, class: "title", cols: 1, rows: 1 %>
   <%= f.text_area :content, :value => decryptor(note.content), class:"content" %>
 
-  <div class="actions">
+  <!-- <div class="actions">
     <%= f.submit %>
-  </div>
+  </div> -->
 <% end %>
 
 <script>
@@ -42,21 +47,49 @@
 $(function() {
   function notify(message, level) {
     if (level === undefined) level = "info";
-    $('.auto-save').html(message);
+    $('<div class="alert alert-' + level + '">' + message + '</div>').
+    appendTo('.auto-save').
+      delay(3000).
+      fadeOut(500, function() {
+        $(this).remove()
+      });
   }
 
-  $("form").on("submit", function(event) {
-    event.preventDefault();
+  var $form = $("form[data-autosave]");
+
+  function saveForm() {
     $.ajax({
-      url: $(this).attr("action"),
+      url: $form.attr("action"),
       type: "POST",
-      data: $(this).serialize(),
+      data: $form.serialize(),
       dataType: "json"
     }).done(function(data, status, response) {
-      notify("Note auto saved at <%= note.updated_at.localtime.strftime("%l:%M %p") %>", "success");
+      notify("Note auto saved.", "success");
     }).fail(function(data, status, response) {
       notify("Note failed to auto save.", "error");
     });
+  }
+
+  var $form = $("form[data-autosave]");
+  var savedForm = $form.serialize();
+  var autosaveInterval = window.setInterval(saveFormIfChanged, 10000);
+
+
+  function saveFormIfChanged() {
+  var currentForm = $form.serialize();
+
+    if (currentForm !== savedForm) {
+      saveForm();
+      savedForm = currentForm;
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  $form.on("submit", function(event) {
+    event.preventDefault();
+    saveForm();
   });
 });
 
