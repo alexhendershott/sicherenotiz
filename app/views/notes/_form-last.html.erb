@@ -1,4 +1,6 @@
-<% if @note.exists? %>
+<% if Note.all.empty? %>
+
+<% else %>
 
 <%= form_for @note, :html => {:"data-autosave" => 'true'} do |f| %>
   <div class="info-bar">
@@ -31,7 +33,6 @@
   </div> -->
 <% end %>
 
-<% else %>
 <% end %>
 
 <script>
