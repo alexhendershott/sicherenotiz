@@ -1,25 +1,15 @@
-<%= form_for note, :html => {:"data-autosave" => 'true'} do |f| %>
-  <% if note.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(note.errors.count, "error") %> prohibited this note from being saved:</h2>
-      <ul>
-      <% note.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for @note, :html => {:"data-autosave" => 'true'} do |f| %>
   <div class="info-bar">
     <div class="date-created">
       Created:
       <span class="date">
-        Now
+        <%= @note.created_at.localtime.strftime("%b %e, %l:%M %p") %>
       </span>
     </div>
     <div class="date-updated">
       Updated:
       <span id="updated_at" class="date">
-        Now
+        <%= @note.updated_at.localtime.strftime("%b %e, %l:%M %p") %>
       </span>
     </div>
     <div class="actions">
@@ -31,8 +21,8 @@
 
     </div>
   </div>
-  <%= f.text_area :title, placeholder: "Start typing note title...", class: "title", cols: 1, rows: 1 %>
-  <%= f.text_area :content, placeholder: "Start typing note content...", class:"content" %>
+  <%= f.text_area :title, class: "title", cols: 1, rows: 1 %>
+  <%= f.text_area :content, :value => decryptor(@note.content), class:"content" %>
 
   <!-- <div class="actions">
     <%= f.submit %>

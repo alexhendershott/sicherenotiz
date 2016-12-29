@@ -9,6 +9,7 @@ class NotesController < ApplicationController
     else
       @notes = Note.all.order("updated_at DESC")
     end
+    @note = Note.last
   end
 
   def show
@@ -26,7 +27,7 @@ class NotesController < ApplicationController
 
     respond_to do |format|
       if @note.save
-        format.html { redirect_to @note, notice: 'Note was successfully created.' }
+        format.html { redirect_to root, notice: 'Note was successfully created.' }
         format.json { render :show, status: :created, location: @note }
       else
         format.html { render :new }

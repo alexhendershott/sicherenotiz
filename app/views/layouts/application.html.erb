@@ -14,12 +14,14 @@
   <body>
     <div class="container">
       <header>
-        <%= image_tag("sincherenotiz-logo.svg", class: "header-logo") %>
-        <h1>Sinchere<span>Notiz</span></h1>
+        <%= link_to root_path do %>
+          <%= image_tag("sincherenotiz-logo.svg", class: "header-logo") %>
+          <h1>Sinchere<span>Notiz</span></h1>
+        <% end %>
 
         <%= render "global/search" %>
 
-        <%= link_to '+', new_note_path, class: "new-note" %>
+        <%= link_to '+', new_note_path, class: "new-note", remote: "true" %>
 
       </header>
       <%= yield %>

@@ -22,11 +22,15 @@ header, footer {
   height: 60px;
   color: #fff;
   text-transform: uppercase;
-  .header-logo {
-    width: 20px;
-    margin-left: 20px;
-    float: left;
-    height: 60px;
+  a {
+    text-decoration: none;
+    color: white;
+    .header-logo {
+      width: 20px;
+      margin-left: 20px;
+      float: left;
+      height: 60px;
+    }
   }
   h1 {
     font-size: 18px;

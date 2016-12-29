@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   devise_for :users
 
   get 'pages/home'
-  root to: "notes#show"
+  root to: "notes#index"
 
-  get 'note/:id/show_dynamic', to: 'notes#show_dynamic', as: 'show_dynamic'
 end
