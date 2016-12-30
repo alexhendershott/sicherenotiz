@@ -2,7 +2,7 @@
 
 <% else %>
 
-<%= form_for @note, :html => {:"data-autosave" => 'true'} do |f| %>
+<%= form_for @note do |f| %>
   <div class="info-bar">
     <div class="date-created">
       Created:
@@ -28,9 +28,9 @@
   <%= f.text_area :title, class: "title", cols: 1, rows: 1 %>
   <%= f.text_area :content, :value => decryptor(@note.content), class:"content" %>
 
-  <!-- <div class="actions">
-    <%= f.submit %>
-  </div> -->
+  <div class="actions">
+    <%= f.submit "Submit", id: "submit-last" %>
+  </div>
 <% end %>
 
 <% end %>
@@ -40,53 +40,7 @@
 </script>
 
 <script>
-$(function() {
-  function notify(message, level) {
-    if (level === undefined) level = "info";
-    $('<div class="alert alert-' + level + '">' + message + '</div>').
-    appendTo('.auto-save').
-      delay(3000).
-      fadeOut(500, function() {
-        $(this).remove()
-      });
-  }
-
-  var $form = $("form[data-autosave]");
-
-  function saveForm() {
-    $.ajax({
-      url: $form.attr("action"),
-      type: "POST",
-      data: $form.serialize(),
-      dataType: "json"
-    }).done(function(data, status, response) {
-      notify("Note auto saved.", "success");
-    }).fail(function(data, status, response) {
-      notify("Note failed to auto save.", "error");
-    });
-  }
-
-  var $form = $("form[data-autosave]");
-  var savedForm = $form.serialize();
-  var autosaveInterval = window.setInterval(saveFormIfChanged, 10000);
-
-
-  function saveFormIfChanged() {
-  var currentForm = $form.serialize();
-
-    if (currentForm !== savedForm) {
-      saveForm();
-      savedForm = currentForm;
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  $form.on("submit", function(event) {
-    event.preventDefault();
-    saveForm();
-  });
-});
-
+  window.setInterval(function(){
+    $('#submit-last').trigger('click');
+  }, 10000);
 </script>

@@ -2,6 +2,7 @@ class Note < ApplicationRecord
   belongs_to :user
 
   before_save :encrypted_content
+  before_save :defaults
 
   private
    def encrypted_content
@@ -12,6 +13,12 @@ class Note < ApplicationRecord
      encrypted_data = crypt.encrypt_and_sign(content) # or crypt.encrypt_and_sign(self.consumer_key)
      self.content = encrypted_data
      # You can refactor to make these steps shorter.
+   end
+
+   def defaults
+     if self.title.blank?
+       self.title = "Untitled"
+     end
    end
 
 end

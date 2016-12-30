@@ -1,4 +1,4 @@
-<%= link_to note, class:"note-link", remote: true do %>
+<%= link_to edit_note_path(note), class:"note-link", remote: true do %>
   <div class="card">
     <span class="date">
       <%= note.updated_at.localtime.strftime("%b %e, %l:%M %p") %>

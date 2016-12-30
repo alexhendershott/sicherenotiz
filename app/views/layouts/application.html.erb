@@ -8,6 +8,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <%= favicon_link_tag 'favicon.ico' %>
+    <link rel="stylesheet" href="https://s3.amazonaws.com/icomoon.io/49367/SichereNotiz/style.css?ud79um">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/autosize.js/3.0.20/autosize.min.js"></script>
   </head>
 
@@ -15,8 +16,8 @@
     <div class="container">
       <header>
         <%= link_to root_path do %>
-          <%= image_tag("sincherenotiz-logo.svg", class: "header-logo") %>
-          <h1>Sinchere<span>Notiz</span></h1>
+          <span class="icon-sincherenotiz-logo header-logo"></span>
+          <h1>Sichere<span>Notiz</span></h1>
         <% end %>
 
         <%= render "global/search" %>

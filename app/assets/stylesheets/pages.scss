@@ -26,10 +26,16 @@ header, footer {
     text-decoration: none;
     color: white;
     .header-logo {
-      width: 20px;
       margin-left: 20px;
       float: left;
-      height: 60px;
+      font-size: 22px;
+      line-height: 60px;
+    }
+    &:hover {
+      color: #ffeb3b;
+      .header-logo {
+        color: #ffeb3b;
+      }
     }
   }
   h1 {
@@ -66,6 +72,11 @@ header, footer {
     width: 400px;
     float: left;
     font-weight: 300;
+    transition: background-color 0.2s ease;
+    &:active, &:focus {
+      background-color: white;
+      color: black;
+    }
   }
   .search-btn {
     display: none;
