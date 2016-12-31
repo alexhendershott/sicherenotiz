@@ -37,6 +37,10 @@ class NotesController < ApplicationController
     redirect_to root_path
   end
 
+  def lastupdated
+    @note = Note.find(params[:note_id])
+  end
+
   def destroy
     @note.destroy
     redirect_to notes_url, notice: 'Note was successfully destroyed.'

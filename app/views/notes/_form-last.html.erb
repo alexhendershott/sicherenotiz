@@ -2,7 +2,7 @@
 
 <% else %>
 
-<%= form_for @note do |f| %>
+<%= form_for @note, :html => { "data-autosave" => true } do |f| %>
   <div class="info-bar">
     <div class="date-created">
       Created:
@@ -16,9 +16,12 @@
         <%= @note.updated_at.localtime.strftime("%b %e, %l:%M %p") %>
       </span>
     </div>
-    <div class="actions">
+    <div id="actions" class="actions">
       <%= link_to @note, method: :delete, data: { confirm: 'Are you sure?' } do %>
         <i class="fa fa-trash" aria-hidden="true"></i>
+      <% end %>
+      <%= button_tag do %>
+        <i class="fa fa-check" aria-hidden="true"></i>
       <% end %>
     </div>
     <div class="auto-save">
@@ -28,9 +31,6 @@
   <%= f.text_area :title, class: "title", cols: 1, rows: 1 %>
   <%= f.text_area :content, :value => decryptor(@note.content), class:"content" %>
 
-  <div class="actions">
-    <%= f.submit "Submit", id: "submit-last" %>
-  </div>
 <% end %>
 
 <% end %>
@@ -40,7 +40,45 @@
 </script>
 
 <script>
-  window.setInterval(function(){
-    $('#submit-last').trigger('click');
-  }, 10000);
+  $(function() {
+  var $form = $("form[data-autosave]");
+  var savedForm = $form.serialize();
+  var autosaveInterval = window.setInterval(saveFormIfChanged, 10000);
+
+  function notify(message, level) {
+    if (level === undefined) level = "info";
+    // display a notification under the page header
+    $('<div class="alert alert-' + level + '">' + message + '</div>').
+      appendTo('.auto-save').
+      delay(3000).
+      fadeOut(500, function() {
+        $(this).remove()
+      });
+  }
+
+  function saveForm() {
+    $.ajax({
+      url: $form.attr("action"),
+      type: "POST",
+      data: $form.serialize(),
+      dataType: "html"
+    }).done(function(data, status, response) {
+      notify("Note saved.", "success");
+    }).fail(function(data, status, response) {
+      notify("Note failed to save.", "error");
+    });
+  }
+
+  function saveFormIfChanged() {
+    var currentForm = $form.serialize();
+
+    if (currentForm !== savedForm) {
+      saveForm();
+      savedForm = currentForm;
+      return true;
+    } else {
+      return false;
+    }
+  }
+  });
 </script>

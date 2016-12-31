@@ -84,6 +84,19 @@
   .actions {
     float: right;
     margin-top: 1px;
+    button {
+      background: none;
+      border: 0px;
+      padding: 0px;
+      .fa {
+        color: #999999;
+        font-size: 18px;
+        &:hover {
+          color: rgba(0,0,0,1);
+          cursor: pointer;
+        }
+      }
+    }
     a {
       text-decoration: none;
       .fa {
