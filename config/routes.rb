@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
   resources :notes do
-    get "lastupdated"
+    get "refreshUpdatedAt"
   end
+
+  get 'refreshSidebar', to: 'notes#refreshSidebar', as: 'refreshSidebar'
 
   devise_for :users
 

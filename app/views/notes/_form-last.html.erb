@@ -64,8 +64,35 @@
       dataType: "html"
     }).done(function(data, status, response) {
       notify("Note saved.", "success");
+      refreshUpdatedAt();
+      refreshSidebar();
     }).fail(function(data, status, response) {
       notify("Note failed to save.", "error");
+    });
+  }
+
+  function refreshUpdatedAt() {
+    var id = $form.attr('data-record-id');
+    $.ajax({
+      url: '/notes/'+id+'/refreshUpdatedAt',
+      type: "GET",
+      dataType: "html"
+    }).done(function(result) {
+      $("#refreshUpdatedAt").html(result);
+    }).fail(function() {
+      console.log("WOMP WOMP");
+    });
+  }
+
+  function refreshSidebar() {
+    $.ajax({
+      url: '/refreshSidebar',
+      type: "GET",
+      dataType: "html"
+    }).done(function(result) {
+      $("#col-1").html(result);
+    }).fail(function() {
+      console.log("WOMP WOMP");
     });
   }
 

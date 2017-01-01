@@ -9,7 +9,10 @@ class NotesController < ApplicationController
     else
       @notes = Note.all.order("updated_at DESC")
     end
-    @note = Note.order("updated_at").last
+    if Note.all.empty?
+    else
+      @note = Note.order("updated_at").last
+    end
   end
 
   def show
@@ -35,10 +38,18 @@ class NotesController < ApplicationController
   def update
     @note.update(note_params)
     redirect_to root_path
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
-  def lastupdated
+  def refreshUpdatedAt
     @note = Note.find(params[:note_id])
+  end
+
+  def refreshSidebar
+    @notes = Note.all.order("updated_at DESC")
   end
 
   def destroy
