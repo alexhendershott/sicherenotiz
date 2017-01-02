@@ -20,11 +20,11 @@ header, footer {
   display: block;
   background-color: #000;
   height: 60px;
-  color: #fff;
+  color: #BBBBBB;
   text-transform: uppercase;
   a {
     text-decoration: none;
-    color: white;
+    color: #BBBBBB;
     .header-logo {
       margin-left: 20px;
       float: left;
@@ -32,9 +32,9 @@ header, footer {
       line-height: 60px;
     }
     &:hover {
-      color: #ffeb3b;
+      color: #ffffff;
       .header-logo {
-        color: #ffeb3b;
+        color: #ffffff;
       }
     }
   }
@@ -82,13 +82,12 @@ header, footer {
     display: none;
   }
   .new-note {
-    color: white;
+    color: #BBBBBB;
     text-decoration: none;
     float: right;
-    color: white;
     text-decoration: none;
     float: right;
-    font-size: 30px;
+    font-size: 20px;
     line-height: 60px;
     margin-right: 20px;
     position: absolute;

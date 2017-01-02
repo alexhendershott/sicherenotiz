@@ -22,7 +22,9 @@
 
         <%= render "global/search" %>
 
-        <%= link_to '+', new_note_path, class: "new-note", remote: "true" %>
+        <%= link_to new_note_path, class: "new-note", remote: "true" do %>
+          <i class="fa fa-plus" aria-hidden="true"></i>
+        <% end %>
 
       </header>
       <%= yield %>

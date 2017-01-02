@@ -9,10 +9,7 @@ class NotesController < ApplicationController
     else
       @notes = Note.all.order("updated_at DESC")
     end
-    if Note.all.empty?
-    else
-      @note = Note.order("updated_at").last
-    end
+    @note = Note.order("updated_at").last
   end
 
   def show
