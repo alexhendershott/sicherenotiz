@@ -130,6 +130,37 @@
   border: 0px;
   outline: none;
 }
+.registration {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 16px;
+  font-weight: 400;
+  display: block;
+  width: 100%;
+  margin-bottom: 12px;
+  border: 0px;
+  outline: none;
+}
+.registration-submit {
+  font-family: 'Source Code Pro', monospace;
+  background: none;
+  border: 0px;
+  background-color: #ffffff;
+  border: 2px solid #171717;
+  color: #171717;
+  font-weight: 700;
+  padding: 10px;
+  width: 100%;
+  font-size: 16px;
+  text-transform: capitalize;
+  margin-top: 6px;
+  margin-bottom: 10px;
+  &:hover {
+    background-color: #171717;
+    border: 2px solid #171717;
+    color: #ffffff;
+    cursor: pointer;
+  }
+}
 .content {
   font-family: 'Source Code Pro', monospace;
   font-size: 12px;

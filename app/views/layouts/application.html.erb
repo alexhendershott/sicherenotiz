@@ -14,22 +14,26 @@
 
   <body>
     <div class="container">
-      <header>
-        <%= link_to root_path do %>
-          <span class="icon-sincherenotiz-logo header-logo"></span>
-          <h1>Sichere<span>Notiz</span></h1>
-        <% end %>
 
-        <%= render "global/search" %>
+      <% if controller_name == "notes" %>
+        <header>
+          <%= link_to root_path do %>
+            <span class="icon-sincherenotiz-logo header-logo"></span>
+            <h1>Sichere<span>Notiz</span></h1>
+          <% end %>
 
-        <%= link_to new_note_path, class: "new-note", remote: "true" do %>
-          <i class="fa fa-plus" aria-hidden="true"></i>
-        <% end %>
+          <%= render "global/search" %>
 
-      </header>
+          <%= link_to new_note_path, class: "new-note", remote: "true" do %>
+            <i class="fa fa-plus" aria-hidden="true"></i>
+          <% end %>
+
+        </header>
+      <% else %>
+      <% end %>
+
       <%= yield %>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+
     </div>
   </body>
 </html>
