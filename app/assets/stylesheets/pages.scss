@@ -22,6 +22,13 @@ header, footer {
   height: 60px;
   color: #BBBBBB;
   text-transform: uppercase;
+  .accounts {
+    float: right;
+    line-height: 60px;
+    text-transform: capitalize;
+    font-size: 12px;
+    margin-right: 20px;
+  }
   a {
     text-decoration: none;
     color: #BBBBBB;
@@ -89,10 +96,7 @@ header, footer {
     float: right;
     font-size: 20px;
     line-height: 60px;
-    margin-right: 20px;
-    position: absolute;
-    right: 0px;
-    top: 0px;
+    margin-left: 10px;
   }
 }
 

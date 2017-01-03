@@ -4,12 +4,14 @@ class NotesController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
-    if params[:search]
-      @notes = Note.where('title LIKE ?', "%#{params[:search]}%").order("updated_at DESC")
-    else
-      @notes = Note.all.order("updated_at DESC")
-    end
-    @note = Note.order("updated_at").last
+
+      if params[:search]
+        @notes = Note.where('title LIKE ?', "%#{params[:search]}%").order("updated_at DESC")
+      else
+        @notes = Note.where("user_id = ?", current_user.id).all.order("updated_at DESC")
+      end
+      @note = Note.where("user_id = ?", current_user.id).last
+
   end
 
   def show
