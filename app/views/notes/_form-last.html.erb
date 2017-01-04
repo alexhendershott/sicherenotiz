@@ -1,7 +1,3 @@
-<% if Note.all.empty? %>
-
-<% else %>
-
 <%= form_for @note, :html => { "data-autosave" => true } do |f| %>
   <div class="info-bar">
     <div class="date-created">
@@ -32,9 +28,6 @@
   <%= f.text_area :content, :value => decryptor(@note.content), class:"content" %>
 
 <% end %>
-
-<% end %>
-
 <script>
   autosize(document.querySelectorAll('textarea'));
 </script>

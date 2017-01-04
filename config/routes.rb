@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   end
 
   get 'refreshSidebar', to: 'notes#refreshSidebar', as: 'refreshSidebar'
-
-  devise_for :users
+  
+  devise_for :users, :controllers => { :registrations => "my_registrations" }
 
   get 'pages/home'
   root to: "notes#index"
