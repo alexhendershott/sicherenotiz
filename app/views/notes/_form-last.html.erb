@@ -102,3 +102,22 @@
   }
   });
 </script>
+
+<script>
+  $(function() {
+    $('#note_content').froalaEditor({
+      toolbarInline: true,
+      charCounterCount: false,
+      toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'color', '-', 'formatUL', 'indent', 'outdent', 'insertImage', 'insertLink']
+    })
+  });
+</script>
+
+<script>
+$(document).ready(function(){
+  var titletext = $('#note_title').val();
+  if (titletext == "Untitled") {
+    $('#note_title').val("");
+  }
+})
+</script>

@@ -20,6 +20,7 @@
     padding-right: 30px;
     padding-bottom: 10px;
     min-height: 94px;
+    max-height: 94px;
     .date {
       font-size: 12px;
       border-bottom: 2px solid rgba(0,0,0,.1);
@@ -43,6 +44,10 @@
       color: #505050;
       font-weight: 300;
       line-height: normal;
+      p {
+        max-height: 30px;
+        overflow: hidden;
+      }
     }
     .actions {
       display: none;
@@ -81,6 +86,7 @@
     font-size: 12px;
     margin-top: 4px;
     margin-right: 10px;
+    font-weight: 300 !important;
   }
   .actions {
     float: right;
@@ -162,7 +168,7 @@
     cursor: pointer;
   }
 }
-.content {
+.content, .fr-box {
   font-family: 'Source Code Pro', monospace;
   font-size: 12px;
   line-height: 22px;

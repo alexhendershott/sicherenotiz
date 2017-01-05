@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 # My Gems
 gem 'devise'
 gem 'font-awesome-sass'
+gem "wysiwyg-rails"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

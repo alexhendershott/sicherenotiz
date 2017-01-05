@@ -46,17 +46,5 @@
       <%= yield %>
 
     </div>
-    <script>
-    $(document).ready(function(){
-      var titletext = $('#note_title').val();
-      if (titletext == "Untitled") {
-        $('#note_title').val("");
-      }
-      var contenttext = $('#note_content').val();
-      if (contenttext == "Start typing note content...") {
-        $('#note_content').val("");
-      }
-    })
-    </script>
   </body>
 </html>
