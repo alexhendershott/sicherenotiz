@@ -31,9 +31,12 @@
             <% else %>
             <%= link_to "Sign In", new_user_session_path %>
             <% end %>
-            <%= link_to new_note_path, class: "new-note", remote: "true" do %>
+            <%= link_to new_blank_path, class: "new-note" do %>
               <i class="fa fa-plus-square" aria-hidden="true"></i>
             <% end %>
+            <!-- <%= link_to new_note_path, class: "new-note", remote: "true" do %>
+              <i class="fa fa-plus-square" aria-hidden="true"></i>
+            <% end %> -->
           </div>
 
         </header>
@@ -43,5 +46,17 @@
       <%= yield %>
 
     </div>
+    <script>
+    $(document).ready(function(){
+      var titletext = $('#note_title').val();
+      if (titletext == "Untitled") {
+        $('#note_title').val("");
+      }
+      var contenttext = $('#note_content').val();
+      if (contenttext == "Start typing note content...") {
+        $('#note_content').val("");
+      }
+    })
+    </script>
   </body>
 </html>

@@ -8,7 +8,7 @@ class NotesController < ApplicationController
       redirect_to new_user_session_path
     else
       if params[:search]
-        @notes = Note.where('title LIKE ?', "%#{params[:search]}%").order("updated_at DESC")
+        @notes = Note.where('title LIKE ?', "%#{params[:search]}%").where("user_id = ?", current_user.id).order("updated_at DESC")
       else
         @notes = Note.where("user_id = ?", current_user.id).all.order("updated_at DESC")
       end
@@ -30,7 +30,7 @@ class NotesController < ApplicationController
     @note = current_user.notes.build(note_params)
 
     if @note.save
-      redirect_to root_path, notice: 'Note was successfully created.'
+
     else
       render :new
     end
@@ -51,6 +51,15 @@ class NotesController < ApplicationController
 
   def refreshSidebar
     @notes = Note.all.order("updated_at DESC")
+  end
+
+  def new_blank
+    @note = Note.new(title: 'Untitled', content: 'Start typing note content...', user_id: current_user.id)
+    if @note.save
+      redirect_to "/"
+    else
+      render :new
+    end
   end
 
   def destroy

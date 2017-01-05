@@ -1,8 +1,8 @@
 class Note < ApplicationRecord
   belongs_to :user
-
+  before_save :default_title
+  before_save :default_content
   before_save :encrypted_content
-  before_save :defaults
 
   private
    def encrypted_content
@@ -15,9 +15,15 @@ class Note < ApplicationRecord
      # You can refactor to make these steps shorter.
    end
 
-   def defaults
+   def default_title
      if self.title.blank?
        self.title = "Untitled"
+     end
+   end
+
+   def default_content
+     if self.content.blank?
+       self.content = "Start typing note content..."
      end
    end
 

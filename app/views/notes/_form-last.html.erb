@@ -24,8 +24,8 @@
 
     </div>
   </div>
-  <%= f.text_area :title, class: "title", cols: 1, rows: 1 %>
-  <%= f.text_area :content, :value => decryptor(@note.content), class:"content" %>
+  <%= f.text_area :title, class: "title", cols: 1, rows: 1, autofocus: true, placeholder: "Untitled" %>
+  <%= f.text_area :content, :value => decryptor(@note.content), class:"content", placeholder: "Start typing note content..." %>
 
 <% end %>
 <script>
