@@ -45,7 +45,7 @@
     .content {
       font-size: 12px;
       color: #505050;
-      font-weight: 300;
+      font-weight: 400;
       line-height: normal;
       p {
         max-height: 30px;
@@ -177,9 +177,14 @@
   font-family: 'Source Code Pro', monospace;
   font-size: 12px;
   line-height: 22px;
-  color: #505050;
-  font-weight: 300;
+  color: #707070;
+  font-weight: 400;
   border: 0px;
   width: 100%;
   outline: none;
+  p {
+    strong {
+      color: black;
+    }
+  }
 }
