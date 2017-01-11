@@ -135,7 +135,7 @@
 }
 .title {
   font-family: 'Source Code Pro', monospace;
-  font-size: 18px;
+  font-size: 28px;
   font-weight: 700;
   display: block;
   width: 100%;
@@ -152,6 +152,9 @@
   margin-bottom: 12px;
   border: 0px;
   outline: none;
+}
+ul {
+  padding-left: 16px;
 }
 .registration-submit {
   font-family: 'Source Code Pro', monospace;
@@ -176,7 +179,7 @@
 }
 .content, .fr-box {
   font-family: 'Source Code Pro', monospace;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 22px;
   color: #000000;
   font-weight: 400;
