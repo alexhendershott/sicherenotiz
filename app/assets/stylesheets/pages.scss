@@ -12,6 +12,8 @@ html, body {
   font-family: 'Source Code Pro', monospace;
   -webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  overflow: hidden;
 }
 
 textarea::-webkit-resizer {
@@ -115,7 +117,8 @@ header, footer {
   right: 0px;
   left: 0px;
   bottom: 0px;
-  width: 380px;
+  width: 320px;
+  height: 100vh;
   box-shadow: inset -10px 0 40px -7px rgba(0,0,0,0.3);
   &::-webkit-scrollbar {
       width: 0px;
@@ -124,9 +127,11 @@ header, footer {
 
 .col-2 {
   background-color: #fff;
-  padding-left: 440px;
+  padding-left: 370px;
   padding-top: 40px;
   padding-right: 80px;
+  overflow: scroll;
+  height: 100vh;
 }
 
 .registration-container {
