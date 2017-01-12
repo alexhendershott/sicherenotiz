@@ -54,7 +54,7 @@ class NotesController < ApplicationController
   end
 
   def new_blank
-    @note = Note.new(title: 'Untitled', content: 'Start typing note content...', user_id: current_user.id)
+    @note = Note.new(title: 'Untitled', user_id: current_user.id)
     if @note.save
       redirect_to "/"
     else

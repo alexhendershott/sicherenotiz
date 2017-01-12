@@ -124,6 +124,7 @@
       charCounterCount: false,
       toolbarButtons: ['bold', 'formatUL', 'formatOL', 'indent', 'outdent', 'fontSize'],
       tabSpaces: 4,
+      placeholderText: 'Start typing note content...',
       enter: $.FroalaEditor.ENTER_DIV
     })
   });
@@ -134,10 +135,6 @@ $(document).ready(function(){
   var titletext = $('#note_title').val();
   if (titletext == "Untitled") {
     $('#note_title').val("");
-  }
-  var contenttext = $('.fr-element p').html();
-  if (contenttext == "Start typing note content...") {
-    $('.fr-element p').css("color", "#b9b9b9");
   }
 })
 </script>

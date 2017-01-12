@@ -1,7 +1,7 @@
 class Note < ApplicationRecord
   belongs_to :user
   before_save :default_title
-  before_save :default_content
+  # before_save :default_content
   before_save :encrypted_content
 
   private
@@ -21,10 +21,10 @@ class Note < ApplicationRecord
      end
    end
 
-   def default_content
-     if self.content.blank?
-       self.content = "Start typing note content..."
-     end
-   end
+  #  def default_content
+  #    if self.content.blank?
+  #      self.content = "Start typing note content..."
+  #    end
+  #  end
 
 end
