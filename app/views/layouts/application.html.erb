@@ -46,5 +46,15 @@
       <%= yield %>
 
     </div>
+    <script>
+    $(document).ready(function(){
+      setTimeout( function(){
+        $('header').addClass('minimized');
+        $('header').animate({ marginTop: '-54px' });
+        $('#col-1').delay( 400 ).animate({ top: '6px' });
+        // $('.info-bar').delay( 100 ).animate({ marginTop: '30px' });
+      }, 3000 );
+    })
+    </script>
   </body>
 </html>

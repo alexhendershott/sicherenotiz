@@ -20,6 +20,12 @@ textarea::-webkit-resizer {
   display: none;
 }
 
+.minimized {
+  position: absolute;
+  transition: all 0.5s ease;
+  width: 100%;
+}
+
 header, footer {
   display: block;
   background-color: #000;
