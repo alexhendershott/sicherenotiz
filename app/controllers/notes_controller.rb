@@ -12,7 +12,7 @@ class NotesController < ApplicationController
       else
         @notes = Note.where("user_id = ?", current_user.id).all.order("updated_at DESC")
       end
-      @note = Note.where("user_id = ?", current_user.id).last
+      @note = Note.where("user_id = ?", current_user.id).order("updated_at").last
     end
   end
 
