@@ -32,9 +32,11 @@
       <% end %> -->
     <% end %>
     <script>
+      $(".title").focus();
       $( ".btn-search" ).click(function() {
         event.preventDefault();
         $('.search').show();
+        $('#search').focus();
       });
       $('input[type=search]').bind("enterKey",function(e){
         $('.search').hide();
