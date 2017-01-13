@@ -208,7 +208,7 @@ header, footer {
   right: 0px;
   left: 0px;
   bottom: 0px;
-  width: 320px;
+  width: 290px;
   height: 100vh;
   box-shadow: inset -10px 0 40px -7px rgba(0,0,0,0.3);
   &::-webkit-scrollbar {
@@ -218,10 +218,11 @@ header, footer {
 
 .col-2 {
   background-color: #fff;
-  padding-left: 370px;
+  padding-left: 330px;
   padding-right: 80px;
   overflow: scroll;
   height: 100vh;
+  border-top: 3px solid black;
 }
 
 .registration-container {
