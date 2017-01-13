@@ -1,4 +1,4 @@
 <%= form_tag notes_path, :method => 'get', :remote => true do %>
-  <%= text_field_tag :search, params[:search], type: "search", placeholder: "Search for notes and hit enter..." %>
+  <%= text_field_tag :search, params[:search], type: "search", placeholder: "Search and hit enter...", :autofocus => true %>
   <%= submit_tag "Search", :name => nil, class: "search-btn" %>
 <% end %>

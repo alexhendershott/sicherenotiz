@@ -14,47 +14,37 @@
 
   <body>
     <div class="container">
-
-      <% if controller_name == "notes" %>
-        <header>
-          <%= link_to root_path do %>
-            <span class="icon-sincherenotiz-logo header-logo"></span>
-            <h1>Sichere<span>Notiz</span></h1>
-          <% end %>
-
-          <%= render "global/search" %>
-
-          <div class="accounts">
-            <% if user_signed_in? %>
-              <%= current_user.fname %> |
-              <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
-            <% else %>
-            <%= link_to "Sign In", new_user_session_path %>
-            <% end %>
-            <%= link_to new_blank_path, class: "new-note" do %>
-              <i class="fa fa-plus-square" aria-hidden="true"></i>
-            <% end %>
-            <!-- <%= link_to new_note_path, class: "new-note", remote: "true" do %>
-              <i class="fa fa-plus-square" aria-hidden="true"></i>
-            <% end %> -->
-          </div>
-
-        </header>
-      <% else %>
-      <% end %>
-
+      <div class="search">
+        <%= render "global/search" %>
+      </div>
       <%= yield %>
-
     </div>
+    <% if user_signed_in? %>
+      <%= link_to "+", new_blank_path, :class => "btn-floating btn-add-new" %>
+      <a href="#" class="btn-floating btn-search">
+        <i class="fa fa-search" aria-hidden="true"></i>
+      </a>
+      <%= link_to destroy_user_session_path, :method => :delete, :class => "btn-floating btn-signout" do %>
+        <i class="fa fa-power-off" aria-hidden="true"></i>
+      <% end %>
+      <!-- <%= link_to root_path, :class => "btn-floating btn-logo" do %>
+        <span class="icon-sincherenotiz-logo header-logo"></span>
+      <% end %> -->
+    <% end %>
     <script>
-    $(document).ready(function(){
-      setTimeout( function(){
-        $('header').addClass('minimized');
-        $('header').animate({ marginTop: '-54px' });
-        $('#col-1').delay( 400 ).animate({ top: '6px' });
-        // $('.info-bar').delay( 100 ).animate({ marginTop: '30px' });
-      }, 3000 );
-    })
+      $( ".btn-search" ).click(function() {
+        event.preventDefault();
+        $('.search').show();
+      });
+      $('input[type=search]').bind("enterKey",function(e){
+        $('.search').hide();
+      });
+      $('input[type=search]').keyup(function(e){
+        if(e.keyCode == 13)
+          {
+            $(this).trigger("enterKey");
+          }
+        });
     </script>
   </body>
 </html>
