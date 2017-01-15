@@ -1,33 +1,3 @@
-<%= form_for @note, :html => { "data-autosave" => true } do |f| %>
-  <div class="info-bar">
-    <div class="date-created">
-      Created:
-      <span class="date">
-        <%= @note.created_at.localtime.strftime("%b %e, %l:%M %p") %>
-      </span>
-    </div>
-    <div class="date-updated">
-      Updated:
-      <span id="updated_at" class="date">
-        <%= @note.updated_at.localtime.strftime("%b %e, %l:%M %p") %>
-      </span>
-    </div>
-    <div id="actions" class="actions">
-      <%= link_to @note, method: :delete, data: { confirm: 'Are you sure?' } do %>
-        <i class="fa fa-trash" aria-hidden="true"></i>
-      <% end %>
-      <%= button_tag do %>
-        <i class="fa fa-check" aria-hidden="true"></i>
-      <% end %>
-    </div>
-    <div class="auto-save">
-
-    </div>
-  </div>
-  <%= f.text_area :title, class: "title", cols: 1, rows: 1, autofocus: true, placeholder: "Untitled" %>
-  <%= f.text_area :content, :value => decryptor(@note.content), class:"content", placeholder: "Start typing note content..." %>
-
-<% end %>
 <script>
   autosize(document.querySelectorAll('textarea'));
 </script>

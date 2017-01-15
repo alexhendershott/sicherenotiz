@@ -1,25 +1,15 @@
-<%= form_for note, :html => { "data-autosave" => true } do |f| %>
-  <% if note.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(note.errors.count, "error") %> prohibited this note from being saved:</h2>
-      <ul>
-      <% note.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for @note, :html => { "data-autosave" => true, "data-record-id" => @note.id } do |f| %>
   <div class="info-bar">
     <div class="date-created">
       Created:
       <span class="date">
-        Now
+        <%= @note.created_at.localtime.strftime("%b %e, %l:%M %p") %>
       </span>
     </div>
     <div class="date-updated">
       Updated:
-      <span id="updated_at" class="date">
-        Now
+      <span id="refreshUpdatedAt" class="date">
+        <%= @note.updated_at.localtime.strftime("%b %e, %l:%M %p") %>
       </span>
     </div>
     <div id="actions" class="actions">
@@ -34,87 +24,8 @@
 
     </div>
   </div>
-  <%= f.text_area :title, placeholder: "Untitled", class: "title", cols: 1, rows: 1, autofocus: true %>
-  <%= f.text_area :content, placeholder: "Start typing note content...", class:"content" %>
-
+  <%= f.text_area :title, class: "title", cols: 1, rows: 1, autofocus: true, placeholder: "Untitled" %>
+  <%= f.text_area :content, :value => decryptor(@note.content), class:"content", placeholder: "Start typing note content..." %>
 <% end %>
 
-<script>
-  autosize(document.querySelectorAll('textarea'));
-</script>
-
-<script>
-  autosize(document.querySelectorAll('textarea'));
-</script>
-
-<script>
-  $(function() {
-  var $form = $("form[data-autosave]");
-  var savedForm = $form.serialize();
-  var autosaveInterval = window.setInterval(saveFormIfChanged, 10000);
-
-  function notify(message, level) {
-    if (level === undefined) level = "info";
-    // display a notification under the page header
-    $('<div class="alert alert-' + level + '">' + message + '</div>').
-      appendTo('.auto-save').
-      delay(3000).
-      fadeOut(500, function() {
-        $(this).remove()
-      });
-  }
-
-  function saveForm() {
-    $.ajax({
-      url: $form.attr("action"),
-      type: "POST",
-      data: $form.serialize(),
-      dataType: "html"
-    }).done(function(data, status, response) {
-      notify("Note saved.", "success");
-      refreshUpdatedAt();
-      refreshSidebar();
-      window.location.href = '/';
-    }).fail(function(data, status, response) {
-      notify("Note failed to save.", "error");
-    });
-  }
-
-  function refreshUpdatedAt() {
-    var id = $form.attr('data-record-id');
-    $.ajax({
-      url: '/notes/'+id+'/refreshUpdatedAt',
-      type: "GET",
-      dataType: "html"
-    }).done(function(result) {
-      $("#refreshUpdatedAt").html(result);
-    }).fail(function() {
-      console.log("WOMP WOMP");
-    });
-  }
-
-  function refreshSidebar() {
-    $.ajax({
-      url: '/refreshSidebar',
-      type: "GET",
-      dataType: "html"
-    }).done(function(result) {
-      $("#col-1").html(result);
-    }).fail(function() {
-      console.log("WOMP WOMP");
-    });
-  }
-
-  function saveFormIfChanged() {
-    var currentForm = $form.serialize();
-
-    if (currentForm !== savedForm) {
-      saveForm();
-      savedForm = currentForm;
-      return true;
-    } else {
-      return false;
-    }
-  }
-  });
-</script>
+<%= render 'global/form_js' %>

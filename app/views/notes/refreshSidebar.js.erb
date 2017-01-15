@@ -1,2 +1,2 @@
 <% @notes = Note.where("user_id = ?", current_user.id).all.order("updated_at DESC") %>
-<%= render @notes %>
+<%= render 'sidebar_notes' %>

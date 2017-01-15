@@ -20,7 +20,8 @@ class NotesController < ApplicationController
   end
 
   def new
-    @note = Note.new
+    @note = Note.new(title: 'Untitled', user_id: current_user.id)
+    @note.save
   end
 
   def edit
@@ -51,15 +52,6 @@ class NotesController < ApplicationController
 
   def refreshSidebar
     @notes = Note.all.order("updated_at DESC")
-  end
-
-  def new_blank
-    @note = Note.new(title: 'Untitled', user_id: current_user.id)
-    if @note.save
-      redirect_to "/"
-    else
-      render :new
-    end
   end
 
   def destroy

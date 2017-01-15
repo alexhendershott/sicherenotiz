@@ -20,7 +20,7 @@
       <%= yield %>
     </div>
     <% if user_signed_in? %>
-      <%= link_to "+", new_blank_path, :class => "btn-floating btn-add-new" %>
+      <%= link_to "+", new_note_path, :class => "btn-floating btn-add-new", remote: true %>
       <a href="#" class="btn-floating btn-search">
         <i class="fa fa-search" aria-hidden="true"></i>
       </a>
@@ -31,22 +31,8 @@
         <span class="icon-sincherenotiz-logo header-logo"></span>
       <% end %> -->
     <% end %>
-    <script>
-      $(".title").focus();
-      $( ".btn-search" ).click(function() {
-        event.preventDefault();
-        $('.search').show();
-        $('#search').focus();
-      });
-      $('input[type=search]').bind("enterKey",function(e){
-        $('.search').hide();
-      });
-      $('input[type=search]').keyup(function(e){
-        if(e.keyCode == 13)
-          {
-            $(this).trigger("enterKey");
-          }
-        });
-    </script>
+
+    <% render 'global/application_js' %>
+
   </body>
 </html>
